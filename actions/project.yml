@@ -1,0 +1,19 @@
+on: pull_request
+
+jobs:
+  eslint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Verificao repositorio do Git
+        uses: actions/checkout@v2
+
+      - name: Instala o node com a versao
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Instalando as dependencias
+        run: npm install
+
+      - name: Executando o lint para verificar se ha erros
+        run: npx eslint .
